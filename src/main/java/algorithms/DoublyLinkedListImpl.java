@@ -72,12 +72,23 @@ public class DoublyLinkedListImpl<E> {
     }
   }
 
+  /**
+   * Add element at last doubly linked list node.
+   *
+   * @param element the element
+   * @return the doubly linked list node
+   */
   public DoublyLinkedListNode<E> addElementAtLast(E element) {
     DoublyLinkedListNode<E> node = new DoublyLinkedListNode<>(element);
     addNodeAtLast(node);
     return node;
   }
 
+  /**
+   * Remove node.
+   *
+   * @param node the node
+   */
   public void removeNode(DoublyLinkedListNode<E> node) {
     if (node != null) {
       node.prev.next = node.next;
