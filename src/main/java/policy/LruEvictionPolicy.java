@@ -38,6 +38,7 @@ public class LruEvictionPolicy<Key> implements EvictionPolicy<Key> {
       return null;
     }
     dll.removeNode(evictedNode);
+    map.remove(evictedNode.getData());
     return evictedNode.getData();
   }
 }

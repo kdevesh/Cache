@@ -17,6 +17,7 @@ public class Main {
     cache.put(4, "four");
     cache.put(5, "five");
     cache.put(6, "six");
+    cache.put(1, "one");
     cache.displayCacheContents();
   }
 }
