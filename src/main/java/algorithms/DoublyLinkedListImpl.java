@@ -9,11 +9,11 @@ public class DoublyLinkedListImpl<E> {
   /**
    * The Dummy head.
    */
-  DoublyLinkedListNode<E> dummyHead;
+  private final DoublyLinkedListNode<E> dummyHead;
   /**
    * The Dummy tail.
    */
-  DoublyLinkedListNode<E> dummyTail;
+  private final DoublyLinkedListNode<E> dummyTail;
 
   /**
    * Instantiates a new Doubly linked list.

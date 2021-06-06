@@ -1,10 +1,14 @@
 package algorithms;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * The type Doubly linked list node.
  *
  * @param <E> the type parameter
  */
+@Getter
 public class DoublyLinkedListNode<E> {
   /**
    * The Data.
