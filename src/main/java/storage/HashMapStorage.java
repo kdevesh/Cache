@@ -2,8 +2,10 @@ package storage;
 
 import exceptions.NotFoundException;
 import exceptions.StorageFullException;
+import impl.CacheImpl;
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.log4j.Logger;
 
 /**
  * The type Hash map storage.
@@ -14,6 +16,7 @@ import java.util.Map;
 public class HashMapStorage<Key, Value> implements Storage<Key, Value> {
   private final Map<Key, Value> storageMap;
   private final Integer capacity;
+  static final Logger logger = Logger.getLogger(HashMapStorage.class);
 
   /**
    * Instantiates a new Hash map storage.
@@ -56,6 +59,6 @@ public class HashMapStorage<Key, Value> implements Storage<Key, Value> {
 
   @Override
   public void displayContents() {
-    storageMap.forEach((k, v) -> System.out.println(k + " " + v));
+    storageMap.forEach((k, v) -> logger.info(k + " " + v));
   }
 }

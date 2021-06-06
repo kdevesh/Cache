@@ -11,6 +11,7 @@ class DoublyLinkedListImplTest {
   @Test
   void addNodeAtLast() {
     dll.addNodeAtLast(new DoublyLinkedListNode<>(1));
+    assertEquals(1,dll.getFirstNode().data);
   }
 
   @Test

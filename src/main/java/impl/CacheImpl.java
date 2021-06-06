@@ -2,6 +2,7 @@ package impl;
 
 import exceptions.NotFoundException;
 import exceptions.StorageFullException;
+import org.apache.log4j.Logger;
 import policy.EvictionPolicy;
 import storage.Storage;
 
@@ -14,6 +15,7 @@ import storage.Storage;
 public class CacheImpl<Key, Value> {
   private final EvictionPolicy<Key> evictionPolicy;
   private final Storage<Key, Value> storage;
+  static final Logger logger = Logger.getLogger(CacheImpl.class);
 
   /**
    * Instantiates a new Cache.
@@ -37,12 +39,12 @@ public class CacheImpl<Key, Value> {
       storage.add(key, value);
       evictionPolicy.keyAccessed(key);
     } catch (StorageFullException ex) {
-      System.out.println("Cache is full...");
+      logger.warn("Cache is full...");
       Key evictedKey = evictionPolicy.evictKey();
       if (evictedKey == null) {
         throw new RuntimeException("Storage is full but Evicted Key is null...nothing to evict");
       }
-      System.out.println("Evicted Key: "+evictedKey);
+      logger.info("Evicted Key: "+evictedKey);
       storage.remove(evictedKey);
       put(key, value);
     }
@@ -60,7 +62,7 @@ public class CacheImpl<Key, Value> {
       this.evictionPolicy.keyAccessed(key);
       return value;
     } catch (NotFoundException notFoundException) {
-      System.out.println("Tried to access non-existing key.");
+      logger.warn("Tried to access non-existing key.");
       return null;
     }
   }
