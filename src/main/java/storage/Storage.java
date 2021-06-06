@@ -35,4 +35,9 @@ public interface Storage<Key, Value> {
    * @throws NotFoundException the not found exception
    */
   Value get(Key key) throws NotFoundException;
+
+  /**
+   * Display contents.
+   */
+  void displayContents();
 }
